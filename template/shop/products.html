@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+     <link rel="stylesheet" href="{% static 'css/products.css' %}">
 <h1>products</h1>
    {% for post in posts %}
 
@@ -13,7 +15,7 @@
     <a href="#" class="btn btn-primary">{{ post.category}}</a>
   </div>
   <div class="card-footer text-body-secondary">
-    2 days ago
+
   </div>
 </div>
        <br>

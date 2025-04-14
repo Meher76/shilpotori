@@ -1,7 +1,8 @@
 <!-- Inside the product loop -->
-
-#{% extends 'base.html' %}
-#{% block content %}
-#<h1>home</h1>
-#{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<h1>home page</h1>
+{% endblock %}
 
