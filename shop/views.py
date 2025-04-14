@@ -15,5 +15,6 @@ def products(request):
 
 def product_details(request):
     return render(request,template_name='shop/product_details.html')
-
+def about_us(request):
+    return render(request,template_name='shop/about_us.html')
 
