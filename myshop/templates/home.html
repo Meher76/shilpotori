@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shilpotori</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="{% static 'images/logo.png' %}" alt="Shilpotori Logo">
+    </div>
+    <nav>
+      <button onclick="window.location.href='/'">Home</button>
+      <button onclick="window.location.href='/'">Category</button>
+      <div class="dropdown">
+        <button>Help</button>
+        <div class="dropdown-content">
+          <a href="#">User help center</a>
+          <a href="#">Track My Order</a>
+          <a href="#">Reset Password</a>
+        </div>
+      </div>
+      <!-- Dropdown for Contact -->
+      <div class="dropdown">
+        <button>Contact</button>
+        <div class="dropdown-content contact-info">
+          <p>Helpline 01882980855</p>
+          <p>Send a message</p>
+          <div class="icon-links">
+            <a href="#" target="_blank">
+              <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="height: 24px;">
+            </a>
+            <a href="#">
+              <img src="{% static 'images/email.png' %}" alt="Email" style="height: 24px;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="intro-text">
+        <h1>SHILPOTORI</h1>
+        <p>
+          We bring you soulful craftsmanship, ethically made and curated with love,
+          connecting you to the beauty of handmade wonders.
+        </p>
+        <hr />
+        <div class="buttons">
+          <a href="{% url 'login' %}">
+            <button class="login">Log In</button>
+          </a>
+          <a href="{% url 'signup' %}">
+            <button class="signup">Sign Up</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="intro-image">
+        <img src="{% static 'images/handmade_art.png' %}" alt="Handmade art of woman with flower" />
+     
+    </section>
+  </main>
+</body>
+</html>

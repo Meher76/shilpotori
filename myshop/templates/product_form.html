@@ -1,0 +1,80 @@
+{% load static %}
+<style>
+  form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff4f0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #cf8564;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #a84a2d;
+  }
+</style>
+
+
+
+<div class="cute-form-container">
+  <div class="cute-form-title">Add / Edit Product</div>
+  {% block content %}
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <!-- Render each form field individually -->
+      <div class="form-field">
+          <label for="{{ form.name.id_for_label }}">Product Name</label>
+          {{ form.name }}
+      </div>
+      
+      <div class="form-field">
+          <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+          {{ form.quantity }}
+      </div>
+      
+      <div class="form-field">
+          <label for="{{ form.material.id_for_label }}">Material</label>
+          {{ form.material }}
+      </div>
+      
+      <div class="form-field">
+          <label for="{{ form.price.id_for_label }}">Price</label>
+          {{ form.price }}
+      </div>
+      
+      <div class="form-field">
+          <label for="{{ form.category.id_for_label }}">Category</label>
+          {{ form.category }}
+      </div>
+      
+      <div class="form-field">
+          <label for="{{ form.image.id_for_label }}">Product Image</label>
+          {{ form.image }}
+      </div>
+      
+      <input type="submit" name="Submit" value="Save Product">
+  </form>
+  {% endblock %}
+</div>

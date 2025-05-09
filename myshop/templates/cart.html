@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart - ShilpoTori</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .buy-now-btn, .remove-btn {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .buy-now-btn {
+      background-color: green;
+      color: white;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+    }
+
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+    }
+
+    .continue-shopping {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .continue-shopping:hover {
+      background-color: #0056b3;
+    }
+
+    td img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th, table td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>My Shopping Cart 🛒</h1>
+
+    {% if products %}
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price (each)</th>
+            <th>Total Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr data-price="{{ product.price }}">
+            <td>
+              <img src="{{ product.image }}" alt="{{ product.name }}">
+              <br>{{ product.name }}
+            </td>
+            <td>
+              <input type="number" value="{{ product.quantity }}" class="quantity-input" min="1">
+            </td>
+            <td>৳{{ product.price }}</td>
+            <td class="product-total-price">৳{{ product.total_price }}</td>
+            <td>
+              <div class="action-buttons">
+                <form method="GET" action="{% url 'order_page' %}">
+                  <input type="hidden" name="product_id" value="{{ product.id }}">
+                  <input type="hidden" name="quantity" value="{{ product.quantity }}" class="hidden-quantity">
+                  <input type="hidden" name="unit_price" value="{{ product.price }}">
+                  <button type="submit" class="buy-now-btn">Buy Now</button>
+                </form>
+
+                <form method="POST" action="{% url 'remove_from_cart' product.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="remove-btn">Remove</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+
+    <a href="{% url 'category_list' %}" class="continue-shopping">← Continue Shopping</a>
+  </div>
+
+  <script>
+    document.querySelectorAll(".quantity-input").forEach(function(input) {
+      input.addEventListener("change", function() {
+        var row = input.closest("tr");
+        var quantity = parseInt(input.value) || 1;
+        var price = parseFloat(row.dataset.price) || 0;
+        var totalCell = row.querySelector(".product-total-price");
+
+        totalCell.textContent = "৳" + (quantity * price);
+      });
+    });
+  </script>
+</body>
+</html>

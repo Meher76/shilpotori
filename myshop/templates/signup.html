@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | ShilpoTori</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Shilpotori Logo">
+    </div>
+    <nav>
+      <button onclick="window.location.href='/'">Home</button>
+      <button onclick="window.location.href='{% url 'category_list' %}'">Category</button>
+      <div class="dropdown">
+        <button>Help</button>
+        <div class="dropdown-content">
+          <a href="{% url 'help' %}">User help center</a>
+          <a href="{% url 'track_order' %}">Track My Order</a>
+          <a href="#">Reset Password</a>
+        </div>
+      </div>
+      <!-- Dropdown for Contact -->
+      <div class="dropdown">
+        <button>Contact</button>
+        <div class="dropdown-content contact-info">
+          <p>Helpline 01882980855</p>
+          <p>Send a message</p>
+          <div class="icon-links">
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="{% static 'images/facebook.png' %}" alt="Facebook" style="height: 24px;">
+            </a>
+            <a href="mailto:faizashoily@gmail.com?subject=Hello%20from%20Shilpotori&body=Hi%2C%20I%20have%20a%20question%20about%20your%20products.">
+              <img src="{% static 'images/email.png' %}" alt="Email" style="height: 24px;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="intro-text">
+        <h1>SHILPOTORI</h1>
+        <p>We bring you soulful craftsmanship, ethically made and curated with love, connecting you to the beauty of handmade wonders.</p>
+        <hr>
+        <div class="signup-box">
+          <h2>Sign Up</h2>
+          <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="User Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <select name="user_type" class="user-type-select" required>
+              <option value="" disabled selected>Select user type</option>
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+            </select>
+            <button type="submit" class="form-btn">Sign Up</button>
+          </form>
+        </div>
+
+
+      </div>
+      <div class="intro-image">
+        <img src="{% static 'images/handmade_art.png' %}" alt="Handmade art of woman with flower" />
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+<style>
+/* Add this CSS at the end of your file or in your styles.css */
+.user-type-select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border-radius: 8px;
+  border: 1px solid #cf8564;
+  background-color: #fff7f2;
+  font-size: 16px;
+  color: #a84a2d;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.user-type-select:focus {
+  border-color: #a84a2d;
+  background-color: #fff0e6;
+}
+</style>

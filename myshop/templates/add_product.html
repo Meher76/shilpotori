@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product - Shilpotori</title>
+  <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+  <style>
+    form {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff4f0;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #cf8564;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a84a2d;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="{% static 'images/logo.png' %}" alt="Logo">
+    <span>SHILPOTORI</span>
+  </div>
+</header>
+
+<main>
+  <h2 style="text-align:center;">Add New Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Product</button>
+  </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f1eae1;
+    color: #3d1f14;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 3px solid #963f27;
+    background-color: #fff;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    width: 30px;
+  }
+  
+  .brand-name {
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6b2c20;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  nav button {
+    background-color: #cf8564;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  nav .profile-icon {
+    font-size: 18px;
+  }
+  
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #d3825f;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #c06344;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  .icon-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .icon-links img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s ease;
+  }
+  
+  .icon-links img:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Main Profile Page */
+  .profile-page {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    background-color: #f5ede5;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-image img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+  }
+  
+  .profile-form label {
+    font-weight: bold;
+  }
+  
+  .profile-form input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #efdbd3;
+    font-size: 14px;
+  }
+  
+  .half-fields {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .half-fields > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .save-btn {
+    align-self: flex-start;
+    padding: 10px 30px;
+    background-color: #b65f42;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  

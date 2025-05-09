@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fefaf5;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+  }
+  
+  header {
+    border-bottom: 4px solid #a22;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #673a1e;
+  }
+  
+  .order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .name-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .name-fields input {
+    flex: 1;
+  }
+  
+  .order-form input[type="text"],
+  .order-form input[type="tel"] {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f3e2dd;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .back {
+    background-color: #c85151;
+    font-family: 'Cursive', sans-serif;
+  }
+  
+  .place-order {
+    background-color: #c85151;
+    font-family: 'Cursive', sans-serif;
+  }
+  
+
+  .total-cost {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #8c2f2f;
+  }
+  
+  .total-cost .total-label {
+    margin-right: 10px;
+  }
+  
+  .total-cost .total-price {
+    background-color: #fff1e6;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 22px;
+    color: #4b2c20;
+  }
+  
+
+  .confirm-button  {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .confirm-button {
+    background: #cf8564;
+    color: #fff;
+  }
+  .confirm-button {
+    background: #a84a2d;
+  }
+

@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Help Center - FAQ</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 35px;
+            background-color: #ecdecc;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .faq-item {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px 25px;
+            transition: background-color 0.3s;
+        }
+
+        .faq-item:hover {
+            background-color: #e2e2e2;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            font-size: 20px;
+            color: #212529;
+        }
+
+        .faq-question::after {
+            content: "▼";
+            position: absolute;
+            right: 0;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 15px;
+            padding-left: 8px;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h1>User Help Center - FAQ</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">How can I place an order?</div>
+            <div class="faq-answer">Go to the product page, click 'Buy Now', then proceed to the order page.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How can I track my order?</div>
+            <div class="faq-answer">Use the 'Order History' page to see your previous orders and their status.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I cancel or modify my order?</div>
+            <div class="faq-answer">Currently, orders cannot be modified once placed. Contact support for cancellations.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I contact customer support?</div>
+            <div class="faq-answer">Use the contact form on our main page or email us at support@shilpotori.com.</div>
+        </div>
+        <a href="{% url 'main' %}" class="back-link">← Back to Main Page</a>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
+                
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

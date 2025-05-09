@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Order - ShilpotorI</title>
+  <link rel="stylesheet" href="{% static 'css/order.css' %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="Shilpotori Logo">
+        <span>SHILPOTORI</span>
+      </div>
+    </header>
+
+    <form class="order-form" method="POST" action="{% url 'place_order' %}">
+      {% csrf_token %}
+
+      <div class="name-fields">
+        <input type="text" name="first_name" placeholder="Enter First name" required>
+        <input type="text" name="last_name" placeholder="Enter Last name" required>
+      </div>
+
+      <input type="tel" name="phone" placeholder="Enter Phone Number" required>
+      <input type="text" name="location" placeholder="Add Location" required>
+
+      <!-- Total Cost Section -->
+      <div class="total-cost">
+        <label for="total" class="total-label">Total :</label>
+        <span id="total" class="total-price">৳ 0</span>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="back" onclick="history.back()">Back</button>
+        <button type="submit" class="place-order">Place Order</button>
+      </div>
+
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <input type="hidden" name="quantity">
+      <input type="hidden" name="unit_price">
+      <input type="hidden" name="total_price">
+    </form>
+  </div>
+
+  <script>
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    const quantity = parseInt(getParam("quantity")) || 1;
+    const unitPrice = parseFloat(getParam("unit_price")) || 0;
+    const total = quantity * unitPrice;
+
+    // Update visible total
+    document.getElementById("total").textContent = "৳ " + total;
+
+    // Update hidden inputs
+    document.querySelector("[name='quantity']").value = quantity;
+    document.querySelector("[name='unit_price']").value = unitPrice;
+    document.querySelector("[name='total_price']").value = total;
+  </script>
+</body>
+</html>
+
+

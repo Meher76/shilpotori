@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shilpotori | Profile</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="{% static 'images/logo.png' %}" alt="Shilpotori Logo">
+      <span class="brand-name">SHILPOTORI</span>
+    </div>
+    <nav>
+      <button onclick="window.location.href='{% url 'main' %}'">Home</button>
+      <button onclick="window.location.href='{% url 'category_list' %}'">Category</button>
+      <div class="dropdown">
+        <button>Help</button>
+        <div class="dropdown-content">
+          <a href="{% url 'help' %}">User help center</a>
+          <a href="{% url 'track_order' %}">Track My Order</a>
+          <a href="#">Reset Password</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Contact</button>
+        <div class="dropdown-content contact-info">
+          <p>Helpline +123456</p>
+          <p>Send a message</p>
+          <div class="icon-links">
+            <a href="https://www.facebook.com/" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="Facebook" /></a>
+            <a href="mailto:faizashoily@gmail.com?subject=Hello%20from%20Shilpotori&body=Hi%2C%20I%20have%20a%20question%20about%20your%20products."><img src="{% static 'images/email.png' %}" alt="Email" /></a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="profile-icon">👤</button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#">Notification</a>
+          <a href="#">My Orders</a>
+          <a href="#">My Returns</a>
+          <a href="#">My Payment Options</a>
+          <a href="#">My Reviews</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-page">
+    <div class="profile-container">
+      <div class="profile-image">
+        <img src="{% static 'images/user_placeholder.png' %}" alt="User Icon" />
+      </div>
+      <div class="user-role-badge" style="text-align:center; margin-bottom:15px;">
+        <span style="background:#cf8564; color:white; padding:6px 18px; border-radius:20px; font-weight:bold; font-size:18px;">{{ user.user_type }}</span>
+      </div>
+      <form class="profile-form" method="POST" action="{% url 'profile' %}">
+        {% csrf_token %}
+        
+        <label>Full Name</label>
+        <input type="text" name="full_name" value="{{ user.get_full_name }}" placeholder="Enter your full name" />
+      
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" />
+      
+        <label>EMAIL</label>
+        <input type="email" name="email" value="{{ user.email }}" placeholder="Enter your email" />
+      
+        <label>PHONE NUMBER</label>
+        <input type="tel" name="phone_number" value="{{ profile.phone_number }}" placeholder="Enter your phone number" />
+      
+        <div class="half-fields">
+          <div>
+            <label>GENDER</label>
+            <input type="text" name="gender" value="{{ profile.gender }}" placeholder="Gender" />
+          </div>
+          <div>
+            <label>DATE OF BIRTH</label>
+            <input type="date" name="dob" value="{{ profile.dob|date:'Y-m-d' }}" />
+          </div>
+        </div>
+      
+        <button type="submit" class="save-btn">Save</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

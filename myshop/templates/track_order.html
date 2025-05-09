@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track My Order - ShilpoTori</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff6f0 0%, #f4c7b5 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .track-card {
+      background: #fff8f5;
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(207,133,100,0.18);
+      padding: 36px 30px 28px 30px;
+      text-align: center;
+      min-width: 320px;
+      max-width: 90vw;
+      margin: auto;
+      position: relative;
+      animation: popin 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes popin {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .track-title {
+      color: #cf8564;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #f4c7b5;
+    }
+    .track-form input[type="text"] {
+      padding: 10px 14px;
+      border: 1.5px solid #f4c7b5;
+      border-radius: 12px;
+      background: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      width: 80%;
+      transition: border 0.2s;
+    }
+    .track-form input[type="text"]:focus {
+      border: 1.5px solid #cf8564;
+      outline: none;
+    }
+    .track-form input[type="submit"] {
+      background: linear-gradient(90deg, #cf8564 60%, #f4c7b5 100%);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 0;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 80%;
+      box-shadow: 0 2px 8px rgba(207,133,100,0.08);
+      transition: background 0.2s;
+    }
+    .track-form input[type="submit"]:hover {
+      background: linear-gradient(90deg, #a84a2d 60%, #cf8564 100%);
+    }
+    .track-info {
+      margin-top: 20px;
+      color: #a84a2d;
+      font-size: 1.08rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="track-card">
+    <div class="track-title">Track My Order</div>
+    <form class="track-form" method="post">
+      {% csrf_token %}
+      <input type="text" name="order_id" placeholder="Enter your Order ID" required>
+      <input type="submit" value="Track Order">
+    </form>
+    {% if tracking_info %}
+      <div class="track-info">
+        <strong>Status:</strong> {{ tracking_info.status }}<br>
+        <strong>Expected Delivery:</strong> {{ tracking_info.eta }}
+      </div>
+    {% elif error %}
+      <div class="track-info" style="color:#e74c3c;">
+        {{ error }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Orders - ShilpotorI</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .order-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .order-card {
+      background-color: #f1eae1;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .order-card h3 {
+      margin-top: 0;
+      color: #444;
+    }
+
+    .order-details p {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .no-orders {
+      text-align: center;
+      font-size: 18px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order-container">
+    <h2>Your Order History</h2>
+
+    {% for order in orders %}
+      <div class="order-card">
+        <h3>Order ID: {{ order.id }}</h3>
+        <div class="order-details">
+          <p><strong>Product:</strong> {{ order.product.name }}</p>
+          <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+          <p><strong>Total Price:</strong> ৳{{ order.total_price }}</p>
+          <p><strong>Location:</strong> {{ order.location }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <div class="no-orders">
+        You have not placed any orders yet.
+      </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
